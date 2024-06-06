@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TodoItem = ({ todo, toggleCompleted }) => {
+const TodoItem = ({ todo, toggleCompleted, deleteTodo }) => {
   const getTodoTitleStyle = () => {
     if (todo.completed === true) {
       return { textDecoration: 'line-through' }
@@ -15,10 +15,11 @@ const TodoItem = ({ todo, toggleCompleted }) => {
         type="checkbox"
         style={styles.checkbox}
         onChange={() => toggleCompleted(todo.id)}
+        checked={todo.completed}
       />
       <p style={getTodoTitleStyle()}>{todo.title}</p>
-      {/* Tambahkan sebuah button di sini */}
-      <button style={styles.button}>x</button>
+      {/* Tambahkan button delete dan panggil fungsi deleteTodo saat diklik */}
+      <button style={styles.button} onClick={() => deleteTodo(todo.id)}>x</button>
     </div>
   )
 }
